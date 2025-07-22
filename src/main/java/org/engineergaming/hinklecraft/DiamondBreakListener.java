@@ -15,7 +15,11 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Explosive;
 import org.bukkit.block;
 
+import java.util.Random;
+
 public class DiamondBreakListener implements Listener {
+    private final Random random = new Random();
+
     @EventHandler
     public void onDiamondBreak(BlockBreakEvent event) {
         if (event.getBlock() == Material.DIAMOND_BLOCK) {
@@ -23,7 +27,9 @@ public class DiamondBreakListener implements Listener {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    world.createExplosion(event.getBlock().getLocatation(), 16F)
+                    if(random.nextInt(10)<=1){
+                        world.createExplosion(event.getBlock().getLocatation(), 16F)
+                    }
                 }
             }.runTaskLater(Main.getPlugin(Main.class), 1L);
         }

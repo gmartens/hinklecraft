@@ -5,13 +5,28 @@ package org.engineergaming.hinklecraft;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.metadata.MetadataValue;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Explosive;
+import org.bukkit.block;
 
 public class DiamondBreakListener implements Listener {
     @EventHandler
     public void onDiamondBreak(BlockBreakEvent event) {
         Block minedBlock = event.getBlock()
         if (minedBlock == Material.DIAMOND_BLOCK) {
-
+            World world = event.getLocation().getWorld();
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    world.spawnEntity(event.getLocation(), EntityType.Explosive).setYield(15);
+                }
+            }.runTaskLater(Main.getPlugin(Main.class), 1L);
         }
     }
 }

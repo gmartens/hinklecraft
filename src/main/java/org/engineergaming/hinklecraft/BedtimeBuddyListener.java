@@ -5,28 +5,22 @@
 
 package org.engineergaming.hinklecraft;
 
-import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Creeper;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.metadata.MetadataValue;
+import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.event.player;
 
 public class BedtimeBuddyListener implements Listener {
     @EventHandler
     public void onPlayerSleeps(PlayerBedEnterEvent event) {
-        World world = event.getLocatation().getWorld();
+        World world = event.getBed().getWorld();
         new BukkitRunnable() {
             @Override
             public void run() {
-                for (int i = 0; i < extra; i++) {
-                    world.spawnEntity(event.getLocation(), EntityType.CREEPER);
+                for (int i = 0; i < 1; i++) {
+                    world.spawnEntity(event.getBed().getLocation(), EntityType.CREEPER);
                 }
             }
         }.runTaskLater(Main.getPlugin(Main.class), 1L);

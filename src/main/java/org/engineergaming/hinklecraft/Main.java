@@ -8,6 +8,8 @@ public class Main extends JavaPlugin {
         getLogger().info("HinkleCraft enabled!");
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new PhantomBoostListener(), this);
+        getServer().getPluginManager().registerEvents(new DiamondBreakListener(), this);
+        getServer().getPluginManager().registerEvents(new BedtimeBuddyListener(), this);
     }
 
     @Override

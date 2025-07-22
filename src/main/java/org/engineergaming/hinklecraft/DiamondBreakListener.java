@@ -22,7 +22,7 @@ public class DiamondBreakListener implements Listener {
 
     @EventHandler
     public void onDiamondBreak(BlockBreakEvent event) {
-        if (event.getBlock() == Material.DIAMOND_BLOCK) {
+        if (event.getBlock() == Material.DIAMOND_ORE) || (event.getBlock() = Material.DEEPSLATE_DIAMOND_ORE) {
             World world = event.getLocation().getWorld();
             new BukkitRunnable() {
                 @Override

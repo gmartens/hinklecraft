@@ -14,6 +14,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Explosive;
 import org.bukkit.block;
+import org.bukkit.event.block;
 
 import java.util.Random;
 
@@ -22,7 +23,7 @@ public class DiamondBreakListener implements Listener {
 
     @EventHandler
     public void onDiamondBreak(BlockBreakEvent event) {
-        if (event.getBlock() == Material.DIAMOND_ORE) || (event.getBlock() = Material.DEEPSLATE_DIAMOND_ORE) {
+        if (event.getBlock().getType() == Material.DIAMOND_ORE) || (event.getBlock().getType() = Material.DEEPSLATE_DIAMOND_ORE) {
             World world = event.getLocation().getWorld();
             new BukkitRunnable() {
                 @Override

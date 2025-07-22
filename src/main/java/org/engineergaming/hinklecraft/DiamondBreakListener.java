@@ -18,13 +18,12 @@ import org.bukkit.block;
 public class DiamondBreakListener implements Listener {
     @EventHandler
     public void onDiamondBreak(BlockBreakEvent event) {
-        Block minedBlock = event.getBlock()
-        if (minedBlock == Material.DIAMOND_BLOCK) {
+        if (event.getBlock() == Material.DIAMOND_BLOCK) {
             World world = event.getLocation().getWorld();
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    world.spawnEntity(event.getLocation(), EntityType.Explosive).setYield(15);
+                    world.createExplosion(event.getBlock().getLocatation(), 16F)
                 }
             }.runTaskLater(Main.getPlugin(Main.class), 1L);
         }

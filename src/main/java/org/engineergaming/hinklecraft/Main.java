@@ -22,6 +22,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LightningBoostListener(), this);
         getServer().getPluginManager().registerEvents(new DiamondBreakListener(), this);
         getServer().getPluginManager().registerEvents(new BedtimeBuddyListener(), this);
+        getServer().getPluginManager().registerEvents(new CoalListener(), this);
 
         String[] materials = {"WOODEN", "STONE", "GOLDEN", "IRON", "DIAMOND", "NETHERITE"};
     }

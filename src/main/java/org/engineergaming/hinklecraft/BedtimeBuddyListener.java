@@ -20,7 +20,7 @@ public class BedtimeBuddyListener implements Listener {
             @Override
             public void run() {
                 for (int i = 0; i < 1; i++) {
-                    world.spawnEntity(event.getBed().getLocation(), EntityType.CREEPER);
+                    world.spawnEntity(event.getPlayer().getLocation(), EntityType.CREEPER);
                 }
             }
         }.runTaskLater(Main.getPlugin(Main.class), 1L);

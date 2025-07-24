@@ -15,14 +15,14 @@ public class CoalListener implements Listener {
 
     @EventHandler
     public void onCoalBreak(BlockBreakEvent event) {
-        if (event.isDropItems())&&((event.getBlock().getType() == Material.COAL_ORE) || (event.getBlock().getType() == Material.DEEPSLATe_COAL_ORE)) {
+        if (event.isDropItems() && ((event.getBlock().getType() == Material.COAL_ORE) || (event.getBlock().getType() == Material.DEEPSLATE_COAL_ORE))) {
             World world = event.getBlock().getWorld();
             // Spawn between 4 and 6 stacks of extra items
             int extra = 258+random.nextInt(129); 
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    world.dropItem(event.getLocation(), ItemStack(Material.COAL, extra));
+                    world.dropItem(event.getBlock().getLocation(), new ItemStack(Material.COAL, extra));
                 }
             }.runTaskLater(Main.getPlugin(Main.class), 1L);
         }

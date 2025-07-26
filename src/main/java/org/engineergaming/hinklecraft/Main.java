@@ -1,21 +1,12 @@
 package org.engineergaming.hinklecraft;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Server;
-import org.bukkit.inventory.CraftingRecipe;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Recipe;
-import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
-    
+
     private String[] recipeRuiner(String[] input) {
         String concatted = ""; 
         for(String s : input) concatted += s;
@@ -35,13 +26,14 @@ public class Main extends JavaPlugin {
         Server server = getServer();
 
         getLogger().info("HinkleCraft enabled!");
-        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        getServer().getPluginManager().registerEvents(new PhantomBoostListener(), this);
-        getServer().getPluginManager().registerEvents(new LightningBoostListener(), this);
-        getServer().getPluginManager().registerEvents(new DiamondBreakListener(), this);
-        getServer().getPluginManager().registerEvents(new BedtimeBuddyListener(), this);
-        getServer().getPluginManager().registerEvents(new CoalListener(), this);
-        getServer().getPluginManager().registerEvents(new ItemBreakListener(), this);
+        server.getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        server.getPluginManager().registerEvents(new PhantomBoostListener(), this);
+        server.getPluginManager().registerEvents(new LightningBoostListener(), this);
+        server.getPluginManager().registerEvents(new DiamondBreakListener(), this);
+        server.getPluginManager().registerEvents(new BedtimeBuddyListener(), this);
+        server.getPluginManager().registerEvents(new CoalListener(), this);
+        server.getPluginManager().registerEvents(new ItemBreakListener(), this);
+        server.getPluginManager().registerEvents(new FurnaceDurability(), this);
 
         // FUNNY TOOL RECIPE RUINER!!!
         String[] materials = {"wooden", "stone", "golden", "iron", "diamond"};

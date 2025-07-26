@@ -34,6 +34,7 @@ public class Main extends JavaPlugin {
         server.getPluginManager().registerEvents(new CoalListener(), this);
         server.getPluginManager().registerEvents(new ItemBreakListener(), this);
         server.getPluginManager().registerEvents(new FurnaceDurability(), this);
+        server.getPluginManager().registerEvents(new WaterLavaBucket(), this);
 
         // FUNNY TOOL RECIPE RUINER!!!
         String[] materials = {"wooden", "stone", "golden", "iron", "diamond"};

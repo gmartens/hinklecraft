@@ -3,6 +3,7 @@ package org.engineergaming.hinklecraft;
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Furnace;
@@ -46,6 +47,7 @@ public class FurnaceDurability implements Listener {
                 setFurnaceMeta(furnace, "smelt_count", getFurnaceMeta(furnace, "smelt_count") + 1);
                 if(getFurnaceMeta(furnace, "smelt_count") >= 32) {
                     world.playEffect(block.getLocation(), Effect.STEP_SOUND, block.getType());
+                    world.playSound(block.getLocation(), Sound.ENTITY_ITEM_BREAK, 1f, 0.5f);
                     block.setType(Material.AIR);
 
                     ItemStack brokenFurnaceComponent = new ItemStack(Material.COBBLESTONE, 1);

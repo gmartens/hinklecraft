@@ -27,7 +27,7 @@ public class Main extends JavaPlugin {
 
         getLogger().info("HinkleCraft enabled!");
         server.getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        server.getPluginManager().registerEvents(new PhantomBoostListener(), this);
+        server.getPluginManager().registerEvents(new MobChanger(), this);
         server.getPluginManager().registerEvents(new LightningBoostListener(), this);
         server.getPluginManager().registerEvents(new DiamondBreakListener(), this);
         server.getPluginManager().registerEvents(new BedtimeBuddyListener(), this);

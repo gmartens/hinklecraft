@@ -2,7 +2,6 @@
 
 ## TODO List:
 * Falling out of world sends to superflat world
-* Iron golem = wither
 * Inventory randomizer
 * Mess up villager trades
 * Nether fortress more difficult

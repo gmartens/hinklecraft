@@ -1,8 +1,6 @@
 package org.engineergaming.hinklecraft;
 
 import java.util.Set;
-import java.util.Map;
-import java.util.HashMap;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -25,90 +23,86 @@ public class CoalItems implements Listener {
     private class Tool {
         ItemStack item;
         ShapedRecipe recipe;
-        public Tool(ItemStack x, ShapedRecipe y){
-            item = x;
-            recipe = y;
-        }
     }
-    Map<String, Tool> CoalTools = new HashMap<String, Tool>();
 
     int coalDurability = 64;
     int coalStackStize = 1;
 
+    Tool pick;
+    Tool axe;
+    Tool shovel;
+    Tool hoe;
+
     public void CoalPick() {
-        ItemStack item = ItemStack.of(Material.DIAMOND_PICKAXE, 1);
-        CoalTools.put("CoalPick", new Tool(item, new ShapedRecipe(key, item)));
-        CoalTools.get("CoalPick").item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
+        pick.item = ItemStack.of(Material.DIAMOND_PICKAXE, 1);
+        pick.item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
                                                                       .add(Enchantment.EFFICIENCY, 100)
                                                                       .build());
-        CoalTools.get("CoalPick").item.setData(DataComponentTypes.ITEM_NAME, MiniMessage.miniMessage().deserialize("<grey><bold>Coal Pickaxe"));
-        CoalTools.get("CoalPick").item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
-        CoalTools.get("CoalPick").item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
+        pick.item.setData(DataComponentTypes.ITEM_NAME, MiniMessage.miniMessage().deserialize("<grey><bold>Coal Pickaxe"));
+        pick.item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
+        pick.item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
 
-        CoalTools.get("CoalPick").recipe = new ShapedRecipe(key, item);
-        CoalTools.get("CoalPick").recipe.shape("CCC", " S ", " S ");
-        CoalTools.get("CoalPick").recipe.setIngredient('C', Material.COAL);
-        CoalTools.get("CoalPick").recipe.setIngredient('S', Material.STICK);
-        plugin.getServer().addRecipe(CoalTools.get("CoalPick").recipe);
+        pick.recipe = new ShapedRecipe(key, pick.item);
+        pick.recipe.shape("CCC", " S ", " S ");
+        pick.recipe.setIngredient('C', Material.COAL);
+        pick.recipe.setIngredient('S', Material.STICK);
+        plugin.getServer().addRecipe(pick.recipe);
     }
 
     public void CoalAxe() {
-        ItemStack item = ItemStack.of(Material.DIAMOND_AXE, 1);
-        CoalTools.put("CoalAxe", new Tool(item, new ShapedRecipe(key, item)));
-        CoalTools.get("CoalAxe").item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
+        axe.item = ItemStack.of(Material.DIAMOND_AXE, 1);
+        axe.item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
                                                                       .add(Enchantment.EFFICIENCY, 100)
                                                                       .build());
-        CoalTools.get("CoalAxe").item.setData(DataComponentTypes.ITEM_NAME, MiniMessage.miniMessage().deserialize("<grey><bold>Coal Axe"));
-        CoalTools.get("CoalAxe").item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
-        CoalTools.get("CoalAxe").item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
+        axe.item.setData(DataComponentTypes.ITEM_NAME, MiniMessage.miniMessage().deserialize("<grey><bold>Coal Axe"));
+        axe.item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
+        axe.item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
 
-        CoalTools.get("CoalAxe").recipe = new ShapedRecipe(key, item);
-        CoalTools.get("CoalAxe").recipe.shape(" CC", " SC", " S ");
-        CoalTools.get("CoalAxe").recipe.setIngredient('C', Material.COAL);
-        CoalTools.get("CoalAxe").recipe.setIngredient('S', Material.STICK);
-        plugin.getServer().addRecipe(CoalTools.get("CoalAxe").recipe);
+        axe.recipe = new ShapedRecipe(key, axe.item);
+        axe.recipe.shape(" CC", " SC", " S ");
+        axe.recipe.setIngredient('C', Material.COAL);
+        axe.recipe.setIngredient('S', Material.STICK);
+        plugin.getServer().addRecipe(axe.recipe);
     }
 
     public void CoalShovel() {
-        ItemStack item = ItemStack.of(Material.DIAMOND_SHOVEL, 1);
-        CoalTools.put("CoalShovel", new Tool(item, new ShapedRecipe(key, item)));
-        CoalTools.get("CoalShovel").item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
+        shovel.item = ItemStack.of(Material.DIAMOND_SHOVEL, 1);
+        shovel.item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
                                                                       .add(Enchantment.EFFICIENCY, 100)
                                                                       .build());
-        CoalTools.get("CoalShovel").item.setData(DataComponentTypes.ITEM_NAME, MiniMessage.miniMessage().deserialize("<grey><bold>Coal Shovel"));
-        CoalTools.get("CoalShovel").item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
-        CoalTools.get("CoalShovel").item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
+        shovel.item.setData(DataComponentTypes.ITEM_NAME, MiniMessage.miniMessage().deserialize("<grey><bold>Coal Shovel"));
+        shovel.item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
+        shovel.item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
 
-        CoalTools.get("CoalShovel").recipe = new ShapedRecipe(key, item);
-        CoalTools.get("CoalShovel").recipe.shape(" C ", " S ", " S ");
-        CoalTools.get("CoalShovel").recipe.setIngredient('C', Material.COAL);
-        CoalTools.get("CoalShovel").recipe.setIngredient('S', Material.STICK);
-        plugin.getServer().addRecipe(CoalTools.get("CoalShovel").recipe);
+        shovel.recipe = new ShapedRecipe(key, shovel.item);
+        shovel.recipe.shape(" C ", " S ", " S ");
+        shovel.recipe.setIngredient('C', Material.COAL);
+        shovel.recipe.setIngredient('S', Material.STICK);
+        plugin.getServer().addRecipe(shovel.recipe);
     }
 
     public void CoalHoe() {
-        ItemStack item = ItemStack.of(Material.DIAMOND_HOE, 1);
-        CoalTools.put("CoalHoe", new Tool(item, new ShapedRecipe(key, item)));
-        CoalTools.get("CoalHoe").item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
+        hoe.item = ItemStack.of(Material.DIAMOND_HOE, 1);
+        hoe.item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
                                                                       .add(Enchantment.EFFICIENCY, 100)
                                                                       .build());
-        CoalTools.get("CoalHoe").item.setData(DataComponentTypes.ITEM_NAME, MiniMessage.miniMessage().deserialize("<grey><bold>Coal Hoe"));
-        CoalTools.get("CoalHoe").item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
-        CoalTools.get("CoalHoe").item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
+        hoe.item.setData(DataComponentTypes.ITEM_NAME, MiniMessage.miniMessage().deserialize("<grey><bold>Coal Hoe"));
+        hoe.item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
+        hoe.item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
 
-        CoalTools.get("CoalHoe").recipe = new ShapedRecipe(key, item);
-        CoalTools.get("CoalHoe").recipe.shape(" CC", " S ", " S ");
-        CoalTools.get("CoalHoe").recipe.setIngredient('C', Material.COAL);
-        CoalTools.get("CoalHoe").recipe.setIngredient('S', Material.STICK);
-        plugin.getServer().addRecipe(CoalTools.get("CoalHoe").recipe);
+        hoe.recipe = new ShapedRecipe(key, hoe.item);
+        hoe.recipe.shape(" CC", " S ", " S ");
+        hoe.recipe.setIngredient('C', Material.COAL);
+        hoe.recipe.setIngredient('S', Material.STICK);
+        plugin.getServer().addRecipe(hoe.recipe);
     }
 
     @EventHandler
     void onBreakBlock(BlockBreakEvent event) {
-        if((event.getPlayer().getInventory().getItemInMainHand().matchesWithoutData(CoalTools.get("CoalPick").item, Set.of(DataComponentTypes.CUSTOM_NAME, DataComponentTypes.DAMAGE, DataComponentTypes.ENCHANTMENTS, DataComponentTypes.REPAIR_COST), true)) ||
-        (event.getPlayer().getInventory().getItemInMainHand().matchesWithoutData(CoalTools.get("CoalAxe").item, Set.of(DataComponentTypes.CUSTOM_NAME, DataComponentTypes.DAMAGE, DataComponentTypes.ENCHANTMENTS, DataComponentTypes.REPAIR_COST), true)) ||
-        (event.getPlayer().getInventory().getItemInMainHand().matchesWithoutData(CoalTools.get("CoalShovel").item, Set.of(DataComponentTypes.CUSTOM_NAME, DataComponentTypes.DAMAGE, DataComponentTypes.ENCHANTMENTS, DataComponentTypes.REPAIR_COST), true)) ||
-        (event.getPlayer().getInventory().getItemInMainHand().matchesWithoutData(CoalTools.get("CoalHoe").item, Set.of(DataComponentTypes.CUSTOM_NAME, DataComponentTypes.DAMAGE, DataComponentTypes.ENCHANTMENTS, DataComponentTypes.REPAIR_COST), true)) ){
+        if((event.getPlayer().getInventory().getItemInMainHand().matchesWithoutData(pick.item, Set.of(DataComponentTypes.CUSTOM_NAME, DataComponentTypes.DAMAGE, DataComponentTypes.ENCHANTMENTS, DataComponentTypes.REPAIR_COST), true)) ||
+        (event.getPlayer().getInventory().getItemInMainHand().matchesWithoutData(axe.item, Set.of(DataComponentTypes.CUSTOM_NAME, DataComponentTypes.DAMAGE, DataComponentTypes.ENCHANTMENTS, DataComponentTypes.REPAIR_COST), true)) ||
+        (event.getPlayer().getInventory().getItemInMainHand().matchesWithoutData(shovel.item, Set.of(DataComponentTypes.CUSTOM_NAME, DataComponentTypes.DAMAGE, DataComponentTypes.ENCHANTMENTS, DataComponentTypes.REPAIR_COST), true)) ||
+        (event.getPlayer().getInventory().getItemInMainHand().matchesWithoutData(hoe.item, Set.of(DataComponentTypes.CUSTOM_NAME, DataComponentTypes.DAMAGE, DataComponentTypes.ENCHANTMENTS, DataComponentTypes.REPAIR_COST), true)) ){
             event.getBlock().getWorld().playSound(event.getPlayer().getLocation(), Sound.ENTITY_GENERIC_EXPLODE , 1, 1);
         }
     }

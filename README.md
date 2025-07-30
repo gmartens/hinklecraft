@@ -10,5 +10,7 @@
 ## Testing Required
 * Coal Crafting Recipies  
 Coal Tools have been added but they may need to be tweaked
-* Big Blazes
+* Big Blazes  
 Are Blazes Big? Do they shoot explosive?
+* Ghast Split  
+Ghasts should split like slimes when killed

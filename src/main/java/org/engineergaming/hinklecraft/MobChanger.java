@@ -2,7 +2,6 @@ package org.engineergaming.hinklecraft;
 
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowman;
 import org.bukkit.entity.Wither;
 import org.bukkit.entity.SmallFireball;
@@ -10,13 +9,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.attribute.Attributable;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.NamespacedKey;
 
 import net.kyori.adventure.text.minimessage.MiniMessage;

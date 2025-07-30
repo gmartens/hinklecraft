@@ -22,7 +22,7 @@ public class CoalListener implements Listener {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    world.dropItem(event.getBlock().getLocation(), new ItemStack(Material.COAL, extra));
+                    world.dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COAL, extra));
                 }
             }.runTaskLater(Main.getPlugin(Main.class), 1L);
         }

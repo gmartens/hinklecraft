@@ -30,7 +30,7 @@ public class LapisPick implements Listener {
                                                                       .add(Enchantment.VANISHING_CURSE, 1)
                                                                       .build());
         item.setData(DataComponentTypes.ITEM_NAME, MiniMessage.miniMessage().deserialize("<blue><bold>Lapis Pickaxe"));
-        item.setData(DataComponentTypes.MAX_DAMAGE, 120);
+        item.setData(DataComponentTypes.MAX_DAMAGE, 1);
 
         recipe = new ShapedRecipe(key, item);
         recipe.shape("LLL", " S ", " S ");

@@ -9,9 +9,5 @@
 * Coal crafting recipes different
 
 ## Testing Required
-* Inventory Randomizer  
-Implimented when the player moves, the chance for things to be randomized needs to be changed to be more reasonable, but what that is needs testing to figure out.
-* Gold Dropped  
-Added when gold ingots are dropped a silverfish spawns that drops 9 gold nuggets when killed.  
 * Coal Crafting Recipies  
 Coal Tools have been added but they may need to be tweaked

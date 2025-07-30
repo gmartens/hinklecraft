@@ -2,7 +2,6 @@ package org.engineergaming.hinklecraft;
 
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Snowman;
 import org.bukkit.entity.Wither;
 import org.bukkit.event.EventHandler;

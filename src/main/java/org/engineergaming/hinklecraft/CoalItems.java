@@ -18,23 +18,36 @@ import io.papermc.paper.datacomponent.item.ItemEnchantments;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
 public class CoalItems implements Listener {
-    Plugin plugin = Main.getPlugin(Main.class);
-    NamespacedKey key = new NamespacedKey(plugin, "coal_pick");
+    private Plugin plugin = Main.getPlugin(Main.class);
+
     private class Tool {
         ItemStack item;
         ShapedRecipe recipe;
+        NamespacedKey key;
+
+        Tool(String name) {
+            this.key = new NamespacedKey(plugin, name);
+        }
     }
 
     int coalDurability = 64;
     int coalStackStize = 1;
 
-    Tool pick;
-    Tool axe;
-    Tool shovel;
-    Tool hoe;
+    Tool pick = new Tool("coal_pickaxe");
+    Tool axe = new Tool("coal_axe");
+    Tool shovel = new Tool("coal_shovel");
+    Tool hoe = new Tool("coal_hoe");
 
-    public void CoalPick() {
-        pick.item = ItemStack.of(Material.DIAMOND_PICKAXE, 1);
+    // Constructor
+    CoalItems() {
+        CoalPick();
+        CoalAxe();
+        CoalShovel();
+        CoalHoe();
+    }
+
+    private void CoalPick() {
+        pick.item = ItemStack.of(Material.STONE_PICKAXE, 1);
         pick.item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
                                                                       .add(Enchantment.EFFICIENCY, 100)
                                                                       .build());
@@ -42,15 +55,15 @@ public class CoalItems implements Listener {
         pick.item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
         pick.item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
 
-        pick.recipe = new ShapedRecipe(key, pick.item);
+        pick.recipe = new ShapedRecipe(pick.key, pick.item);
         pick.recipe.shape("CCC", " S ", " S ");
         pick.recipe.setIngredient('C', Material.COAL);
         pick.recipe.setIngredient('S', Material.STICK);
         plugin.getServer().addRecipe(pick.recipe);
     }
 
-    public void CoalAxe() {
-        axe.item = ItemStack.of(Material.DIAMOND_AXE, 1);
+    private void CoalAxe() {
+        axe.item = ItemStack.of(Material.STONE_AXE, 1);
         axe.item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
                                                                       .add(Enchantment.EFFICIENCY, 100)
                                                                       .build());
@@ -58,15 +71,15 @@ public class CoalItems implements Listener {
         axe.item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
         axe.item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
 
-        axe.recipe = new ShapedRecipe(key, axe.item);
+        axe.recipe = new ShapedRecipe(axe.key, axe.item);
         axe.recipe.shape(" CC", " SC", " S ");
         axe.recipe.setIngredient('C', Material.COAL);
         axe.recipe.setIngredient('S', Material.STICK);
         plugin.getServer().addRecipe(axe.recipe);
     }
 
-    public void CoalShovel() {
-        shovel.item = ItemStack.of(Material.DIAMOND_SHOVEL, 1);
+    private void CoalShovel() {
+        shovel.item = ItemStack.of(Material.STONE_SHOVEL, 1);
         shovel.item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
                                                                       .add(Enchantment.EFFICIENCY, 100)
                                                                       .build());
@@ -74,15 +87,15 @@ public class CoalItems implements Listener {
         shovel.item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
         shovel.item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
 
-        shovel.recipe = new ShapedRecipe(key, shovel.item);
+        shovel.recipe = new ShapedRecipe(shovel.key, shovel.item);
         shovel.recipe.shape(" C ", " S ", " S ");
         shovel.recipe.setIngredient('C', Material.COAL);
         shovel.recipe.setIngredient('S', Material.STICK);
         plugin.getServer().addRecipe(shovel.recipe);
     }
 
-    public void CoalHoe() {
-        hoe.item = ItemStack.of(Material.DIAMOND_HOE, 1);
+    private void CoalHoe() {
+        hoe.item = ItemStack.of(Material.STONE_HOE, 1);
         hoe.item.setData(DataComponentTypes.ENCHANTMENTS, ItemEnchantments.itemEnchantments()
                                                                       .add(Enchantment.EFFICIENCY, 100)
                                                                       .build());
@@ -90,7 +103,7 @@ public class CoalItems implements Listener {
         hoe.item.setData(DataComponentTypes.MAX_DAMAGE, coalDurability);
         hoe.item.setData(DataComponentTypes.MAX_STACK_SIZE, coalStackStize);
 
-        hoe.recipe = new ShapedRecipe(key, hoe.item);
+        hoe.recipe = new ShapedRecipe(hoe.key, hoe.item);
         hoe.recipe.shape(" CC", " S ", " S ");
         hoe.recipe.setIngredient('C', Material.COAL);
         hoe.recipe.setIngredient('S', Material.STICK);

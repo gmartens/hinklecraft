@@ -15,6 +15,9 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.attribute.Attributable;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.attribute.AttributeInstance;
+import org.bukkit.NamespacedKey;
 
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
@@ -92,12 +95,13 @@ public class MobChanger implements Listener {
 
     @EventHandler
     public void onBlazeSpawn(CreatureSpawnEvent event) {
-        if(event.getEntityType() == EntityType.BLAZE && (event.getSpawnReason() == SpawnReason.NATURAL || event.getSpawnReason() == SpawnReason.SPAWNER) {
+        if(event.getEntityType() == EntityType.BLAZE && (event.getSpawnReason() == SpawnReason.NATURAL || event.getSpawnReason() == SpawnReason.SPAWNER_EGG)) {
             new BukkitRunnable() {
                 @Override
                 public void run () {
-                    event.getEntity().registerAttribute(attribute.SCALE = 2L);
-                    event.getEntity().registerAttribute(Attribute.MAX_HEALTH = 40);
+                    event.getEntity().getAttribute(Attribute.SCALE).addModifier(new AttributeModifier(new NamespacedKey(plugin, "BlazeEnlargenModifier"), 1L, AttributeModifier.Operation.ADD_NUMBER));
+                    event.getEntity().getAttribute(Attribute.MAX_HEALTH).addModifier(new AttributeModifier(new NamespacedKey(plugin, "BlazeIncreaseHealthModifier"), 2L, AttributeModifier.Operation.MULTIPLY_SCALAR_1));
+
                 }
             }.runTaskLater(plugin, 1L);
         }

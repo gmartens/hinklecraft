@@ -2,13 +2,19 @@ package org.engineergaming.hinklecraft;
 
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowman;
 import org.bukkit.entity.Wither;
+import org.bukkit.entity.SmallFireball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.projectiles.ProjectileSource;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.attribute.Attributable;
+import org.bukkit.attribute.Attribute;
 
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
@@ -84,4 +90,30 @@ public class MobChanger implements Listener {
         }
     }
 
+    @EventHandler
+    public void onBlazeSpawn(CreatureSpawnEvent event) {
+        if(event.getEntityType() == EntityType.BLAZE && (event.getSpawnReason() == SpawnReason.NATURAL || event.getSpawnReason() == SpawnReason.SPAWNER) {
+            new BukkitRunnable() {
+                @Override
+                public void run () {
+                    event.getEntity().registerAttribute(attribute.SCALE = 2L);
+                    event.getEntity().registerAttribute(Attribute.MAX_HEALTH = 40);
+                }
+            }.runTaskLater(plugin, 1L);
+        }
+    }
+    
+    @EventHandler
+    public void onBlazeFireballShoot(ProjectileLaunchEvent event) {
+        if(event.getEntityType() == EntityType.SMALL_FIREBALL) {
+            new BukkitRunnable() {
+                @Override
+                public void run () {
+                    SmallFireball fire = (SmallFireball) event.getEntity();
+                    fire.setYield(2F);
+                    fire.setIsIncendiary(true);
+                }
+            }.runTaskLater(plugin, 1L);
+        }
+    }
 }

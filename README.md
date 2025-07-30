@@ -4,10 +4,11 @@
 * Falling out of world sends to superflat world
 * Mess up villager trades
 * Nether fortress more difficult
-* Big blazes
 * Dropped item(s) changed
 * Coal crafting recipes different
 
 ## Testing Required
 * Coal Crafting Recipies  
 Coal Tools have been added but they may need to be tweaked
+* Big Blazes
+Are Blazes Big? Do they shoot explosive?

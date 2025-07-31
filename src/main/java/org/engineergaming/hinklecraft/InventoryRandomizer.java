@@ -37,7 +37,7 @@ public class InventoryRandomizer implements Listener{
                             .miniMessage()
                             .deserialize("<green><bold>[Hinklecraft] <blue>Here!</bold> <blue>Enjoy this free item! Thankfully the slot we needed was open!"));
                         }
-                        event.getPlayer().getInventory().setItem(slot, new ItemStack(newMat, newMat.getMaxStackSize()));
+                        event.getPlayer().getInventory().setItem(slot, new ItemStack(newMat, random.nextInt(newMat.getMaxStackSize())+1));
                     };
                 }.runTaskLater(plugin, 1L);
             }

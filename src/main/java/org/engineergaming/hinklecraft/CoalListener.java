@@ -27,13 +27,14 @@ public class CoalListener implements Listener {
             if (!coalFound) {return;}
             World world = event.getBlock().getWorld();
             // Spawn between 4 and 6 stacks of extra items
-            int extra = 32+random.nextInt(16); 
+            int extra = 4+random.nextInt(2); 
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    for (int i = 0; i < extra; i++) {
-                        world.dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COAL, totalItems*8));
+                    for (int i = 0; i < extra*totalItems; i++) {
+                        world.dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COAL, 64));
                     }
+                    world.dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COAL, random.nextInt(64)));
                 }
             }.runTaskLater(Main.getPlugin(Main.class), 1L);
         }

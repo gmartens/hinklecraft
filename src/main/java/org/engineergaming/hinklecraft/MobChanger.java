@@ -1,7 +1,9 @@
 package org.engineergaming.hinklecraft;
 
 import org.bukkit.World;
+import org.bukkit.entity.Blaze;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Snowman;
 import org.bukkit.entity.Wither;
 import org.bukkit.entity.SmallFireball;
@@ -13,6 +15,7 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -91,29 +94,29 @@ public class MobChanger implements Listener {
 
     @EventHandler
     public void onBlazeSpawn(CreatureSpawnEvent event) {
-        if(event.getEntityType() == EntityType.BLAZE && (event.getSpawnReason() == SpawnReason.NATURAL || event.getSpawnReason() == SpawnReason.SPAWNER_EGG)) {
-            new BukkitRunnable() {
-                @Override
-                public void run () {
-                    event.getEntity().getAttribute(Attribute.SCALE).addModifier(new AttributeModifier(new NamespacedKey(plugin, "BlazeEnlargenModifier"), 1L, AttributeModifier.Operation.ADD_NUMBER));
-                    event.getEntity().getAttribute(Attribute.MAX_HEALTH).addModifier(new AttributeModifier(new NamespacedKey(plugin, "BlazeIncreaseHealthModifier"), 2L, AttributeModifier.Operation.MULTIPLY_SCALAR_1));
-
-                }
-            }.runTaskLater(plugin, 1L);
+        if(event.getEntityType() == EntityType.BLAZE && (event.getSpawnReason() == SpawnReason.NATURAL || event.getSpawnReason() == SpawnReason.SPAWNER_EGG || event.getSpawnReason() == SpawnReason.SPAWNER)) {
+            Blaze blaze = (Blaze)event.getEntity();
+            blaze.getAttribute(Attribute.SCALE).addModifier(new AttributeModifier(new NamespacedKey(plugin, "BlazeEnlargenModifier"), 1L, AttributeModifier.Operation.ADD_NUMBER));
+            blaze.getAttribute(Attribute.MAX_HEALTH).addModifier(new AttributeModifier(new NamespacedKey(plugin, "BlazeIncreaseHealthModifier"), 2L, AttributeModifier.Operation.MULTIPLY_SCALAR_1));
+            blaze.customName(MiniMessage.miniMessage().deserialize("<bold><red>Finkle"));
+            blaze.heal(100);
         }
     }
     
     @EventHandler
     public void onBlazeFireballShoot(ProjectileLaunchEvent event) {
         if(event.getEntityType() == EntityType.SMALL_FIREBALL) {
-            new BukkitRunnable() {
-                @Override
-                public void run () {
-                    SmallFireball fire = (SmallFireball) event.getEntity();
-                    fire.setYield(2F);
-                    fire.setIsIncendiary(true);
-                }
-            }.runTaskLater(plugin, 1L);
+            World world = event.getEntity().getWorld();
+            SmallFireball sfb = (SmallFireball)event.getEntity();
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                world.spawn(sfb.getLocation(), Fireball.class, (Fireball f) -> {
+                    f.setYield(4L);
+                    f.setShooter(sfb.getShooter());
+                    f.setVelocity(sfb.getVelocity());
+                    f.setAcceleration(sfb.getAcceleration());
+                });
+                sfb.remove();
+            }, 0L);
         }
     }
 }

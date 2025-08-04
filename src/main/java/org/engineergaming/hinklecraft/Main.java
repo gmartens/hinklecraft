@@ -5,21 +5,11 @@ import org.bukkit.Server;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class Main extends JavaPlugin {
 
-    private String[] recipeRuiner(String[] input) {
-        String concatted = ""; 
-        for(String s : input) concatted += s;
-        String full_ruined = "";
-        for(int i = 0; i < concatted.length(); i++) {
-            full_ruined += concatted.charAt((i + 1) % concatted.length());
-        }
-        String[] output = new String[3];
-        for(int i = 0; i < output.length; i++) {
-            output[i] = full_ruined.substring(i*3, i*3+3);
-        }
-        return output;
-    }
 
     @Override
     public void onEnable() {
@@ -41,22 +31,7 @@ public class Main extends JavaPlugin {
         server.getPluginManager().registerEvents(new GoldDropListener(), this);
         server.getPluginManager().registerEvents(new CoalItems(), this);
         server.getPluginManager().registerEvents(new GhastSplit(), this);
-
-        // FUNNY TOOL RECIPE RUINER!!!
-        String[] materials = {"wooden", "stone", "golden", "iron", "diamond"};
-        String[] tools = {"pickaxe", "hoe", "shovel", "axe", "sword"};
-
-        String[] flippedRecipeShape = {"ihg", "fed", "cba"};
-        for(String mat : materials) {
-            flippedRecipeShape = recipeRuiner(flippedRecipeShape);
-            for(String tool : tools) {
-                NamespacedKey key = NamespacedKey.minecraft(mat + "_" + tool);
-                getLogger().info("Flipping: " + key.toString());
-                ShapedRecipe recipe = (ShapedRecipe)server.getRecipe(key);
-                server.removeRecipe(key);
-                server.addRecipe(recipe.shape(flippedRecipeShape));
-            }
-        }
+        server.getPluginManager().registerEvents(new RecipeHandler(), this);
     }
 
     @Override

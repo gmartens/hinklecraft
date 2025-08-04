@@ -60,6 +60,7 @@ public class CoalItems implements Listener {
         pick.recipe.setIngredient('C', Material.COAL);
         pick.recipe.setIngredient('S', Material.STICK);
         plugin.getServer().addRecipe(pick.recipe);
+        RecipeHandler.recipes.add(pick.key);
     }
 
     private void CoalAxe() {
@@ -76,6 +77,7 @@ public class CoalItems implements Listener {
         axe.recipe.setIngredient('C', Material.COAL);
         axe.recipe.setIngredient('S', Material.STICK);
         plugin.getServer().addRecipe(axe.recipe);
+        RecipeHandler.recipes.add(axe.key);
     }
 
     private void CoalShovel() {
@@ -92,6 +94,7 @@ public class CoalItems implements Listener {
         shovel.recipe.setIngredient('C', Material.COAL);
         shovel.recipe.setIngredient('S', Material.STICK);
         plugin.getServer().addRecipe(shovel.recipe);
+        RecipeHandler.recipes.add(shovel.key);
     }
 
     private void CoalHoe() {
@@ -108,6 +111,7 @@ public class CoalItems implements Listener {
         hoe.recipe.setIngredient('C', Material.COAL);
         hoe.recipe.setIngredient('S', Material.STICK);
         plugin.getServer().addRecipe(hoe.recipe);
+        RecipeHandler.recipes.add(hoe.key);
     }
 
     @EventHandler

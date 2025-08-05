@@ -1,8 +1,8 @@
 package org.engineergaming.hinklecraft;
 
-import org.bukkit.NamespacedKey;
-import org.bukkit.Server;
+import org.bukkit.*;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -14,24 +14,27 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Server server = getServer();
+        PluginManager pm = server.getPluginManager();
 
         getLogger().info("HinkleCraft enabled!");
-        server.getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        server.getPluginManager().registerEvents(new MobChanger(), this);
-        server.getPluginManager().registerEvents(new LightningBoostListener(), this);
-        server.getPluginManager().registerEvents(new DiamondBreakListener(), this);
-        server.getPluginManager().registerEvents(new BedtimeBuddyListener(), this);
-        server.getPluginManager().registerEvents(new CoalListener(), this);
-        server.getPluginManager().registerEvents(new ItemBreakListener(), this);
-        server.getPluginManager().registerEvents(new FurnaceDurability(), this);
-        server.getPluginManager().registerEvents(new WaterLavaBucket(), this);
-        server.getPluginManager().registerEvents(new FoodPotionRandomizer(), this);
-        server.getPluginManager().registerEvents(new LapisPick(), this);
-        server.getPluginManager().registerEvents(new InventoryRandomizer(), this);
-        server.getPluginManager().registerEvents(new GoldDropListener(), this);
-        server.getPluginManager().registerEvents(new CoalItems(), this);
-        server.getPluginManager().registerEvents(new GhastSplit(), this);
-        server.getPluginManager().registerEvents(new RecipeHandler(), this);
+        pm.registerEvents(new SuperFlatWorld(), this);
+        pm.registerEvents(new PlayerJoinListener(), this);
+        pm.registerEvents(new MobChanger(), this);
+        pm.registerEvents(new LightningBoostListener(), this);
+        pm.registerEvents(new DiamondBreakListener(), this);
+        pm.registerEvents(new BedtimeBuddyListener(), this);
+        pm.registerEvents(new CoalListener(), this);
+        pm.registerEvents(new ItemBreakListener(), this);
+        pm.registerEvents(new FurnaceDurability(), this);
+        pm.registerEvents(new WaterLavaBucket(), this);
+        pm.registerEvents(new FoodPotionRandomizer(), this);
+        pm.registerEvents(new LapisPick(), this);
+        pm.registerEvents(new InventoryRandomizer(), this);
+        pm.registerEvents(new GoldDropListener(), this);
+        pm.registerEvents(new CoalItems(), this);
+        pm.registerEvents(new GhastSplit(), this);
+        pm.registerEvents(new RecipeHandler(), this);
+        pm.registerEvents(new SlimeBlockBounce(), this);
     }
 
     @Override

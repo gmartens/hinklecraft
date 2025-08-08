@@ -11,6 +11,8 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -67,8 +69,9 @@ public class SuperFlatWorld implements Listener {
         if(event.getCause() != EntityDamageEvent.DamageCause.VOID) return;
         Bukkit.getLogger().info("Event!");
         Player player = (Player)event.getEntity();
-        Location destination = new Location(superFlatWorld, 0, 10, 0);
+        Location destination = new Location(superFlatWorld, player.getX(), 200, player.getY());
         player.teleport(destination);
+        player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 200, 100, true, false, false));
     }
 
 }

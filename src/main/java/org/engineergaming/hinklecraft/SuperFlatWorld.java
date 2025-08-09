@@ -28,9 +28,9 @@ public class SuperFlatWorld implements Listener {
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
                     chunkData.setBlock(x, 0, z, Material.BEDROCK);
-                    chunkData.setBlock(x, 1, z, Material.DIRT);
-                    chunkData.setBlock(x, 2, z, Material.DIRT);
-                    chunkData.setBlock(x, 3, z, Material.GRASS_BLOCK);
+                    chunkData.setBlock(x, 1, z, Material.NETHERITE_BLOCK);
+                    chunkData.setBlock(x, 2, z, Material.HONEY_BLOCK);
+                    chunkData.setBlock(x, 3, z, Material.SLIME_BLOCK);
                 }
             }
         }

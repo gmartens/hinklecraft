@@ -37,6 +37,8 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new SlimeBlockBounce(), this);
         pm.registerEvents(new VillagerTradeManager(), this);
         pm.registerEvents(new EnchantChanging(), this);
+        pm.registerEvents(new HealthScaleListener(), this);
+        pm.registerEvents(new CrouchSoundListener(), this);
         
         RandomSoundScheduler soundScheduler = new RandomSoundScheduler(this);
         soundScheduler.startScheduler(3*60); // every 3 minutes

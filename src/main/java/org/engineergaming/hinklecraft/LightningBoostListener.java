@@ -13,7 +13,7 @@ public class LightningBoostListener implements Listener {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    for(int i = 0; i < 100; i++) { 
+                    for(int i = 0; i < 300; i++) {
                         event.getWorld().strikeLightning(event.getLightning().getLocation());
                     }
                 }

@@ -67,7 +67,6 @@ public class SuperFlatWorld implements Listener {
         if(event.getEntity().getType() != EntityType.PLAYER) return;
         Bukkit.getLogger().info(event.getCause().toString());
         if(event.getCause() != EntityDamageEvent.DamageCause.VOID) return;
-        Bukkit.getLogger().info("Event!");
         Player player = (Player)event.getEntity();
         Location destination = new Location(superFlatWorld, player.getX(), 200, player.getY());
         player.teleport(destination);

@@ -1,7 +1,6 @@
 # This is a plugin for minecraft that does a bit if trolling
 
 ## TODO List:
-* Falling out of world sends to superflat world
 * Mess up villager trades
 * Nether fortress more difficult
 * Dropped item(s) changed

@@ -14,8 +14,7 @@ public class CrouchSoundListener implements Listener {
         
         // Only play sound when starting to crouch, not when stopping
         if (event.isSneaking()) {
-            // Example: player.playSound(player.getLocation(), "custom.crouch_sound", 1.0f, 1.0f);
-            player.playSound(player.getLocation(), "hinklecraft.fart", 1.0f, 1.0f);
+            player.getWorld().playSound(player.getLocation(), "hinklecraft.fart", 1.0f, 1.0f);
         }
     }
 }
